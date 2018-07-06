@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react'
 import './App.css'
 import Sidebar from './Sidebar'
@@ -8,8 +9,6 @@ class App extends Component {
   state = {
     map: undefined,
     sidebar: false,
-    // title_window: undefined,
-    // info_windows: [],
     markers: [],
     filter: '0',
     pois: [ // local database of Points of Interest

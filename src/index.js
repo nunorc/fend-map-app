@@ -12,6 +12,6 @@ ReactDOM.render(
 document.addEventListener('DOMContentLoaded', (event) => {
   // register service worker if feature available in browser
   if('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js');
+    navigator.serviceWorker.register('sw.js')
   }
-});
+})

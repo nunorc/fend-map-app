@@ -3,6 +3,8 @@
 
 Prepared in the context of Udacity's Front End Developer nanodegree.
 
+[Live App](https://nunorc.github.io/fend-map-app/)
+
 ## Run the application locally
 
 To run the application locally download or [clone](https://help.github.com/articles/cloning-a-repository/) the project repository. In the folder repository, install all project dependencies with:

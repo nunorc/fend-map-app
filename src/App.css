@@ -137,6 +137,11 @@
   bottom: 0;
 }
 
+#App-map-canvas-text {
+  text-align: center;
+  padding: 100px;
+}
+
 .App-info-box-title {
   font-size: 1.2em;
   font-weight: bold;

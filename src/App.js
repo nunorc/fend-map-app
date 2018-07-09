@@ -1,3 +1,4 @@
+/*global google*/
 
 import React, { Component } from 'react'
 import './App.css'
@@ -186,23 +187,24 @@ class App extends Component {
     e.preventDefault()
   }
 
-  // center map in a given marker position
-  centerMap = (e, p) => {
-    this.state.map.setCenter(p)
+  // center map in a given marker position and disply marker's info window
+  centerMap = (e, m) => {
+    this.showInfoWindow(m)
+    this.state.map.setCenter(m.getPosition())
     e.preventDefault()
   }
 
   // init map
-  componentDidMount() {
-    if (window.google && window.google.maps) {
+  myInitMap = () => {
+    if (google && google.maps) {
       this.setState({
-        map: new window.google.maps.Map(document.getElementById('App-map-canvas'), {
+        map: new google.maps.Map(document.getElementById('App-map-canvas'), {
           center: { lat: 41.44344, lng: -8.293243 },
           mapTypeId: 'hybrid',
           mapTypeControl: false,
           mapTypeControlOptions: {
-            style: window.google.maps.MapTypeControlStyle.DROPDOWN_MENU,
-            position: window.google.maps.ControlPosition.LEFT_BOTTOM
+            style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+            position: google.maps.ControlPosition.LEFT_BOTTOM
           },
           fullscreenControl: false,
           zoom: 16,
@@ -214,6 +216,12 @@ class App extends Component {
       // (en) Maps not available, try later.
       alert('Mapas não disponíveis, tente mais tarde.')
     }
+  }
+
+  componentDidMount() {
+    window.myInitMap = this.myInitMap
+
+    loadJS('https://maps.google.com/maps/api/js?key=AIzaSyA_smHey2aQeAsXYN7vzkIBFMXtAWmUPEo&v=3&callback=myInitMap')
   }
 
   render() {
@@ -229,10 +237,20 @@ class App extends Component {
         <Header
           toogleSidebar = {this.toogleSidebar}
         />
-        <Map />
+        <Map 
+          map = {this.state.map}
+        />
       </div>
     );
   }
+}
+
+function loadJS(src) {
+    var ref = window.document.getElementsByTagName("script")[0];
+    var script = window.document.createElement("script");
+    script.src = src;
+    script.async = true;
+    ref.parentNode.insertBefore(script, ref);
 }
 
 export default App

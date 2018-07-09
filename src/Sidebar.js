@@ -20,7 +20,7 @@ class Sidebar extends Component {
           <option value="4">Restaurants</option>
         </select>
         <div className="App-divider"></div>
-        <ul>
+        <ul aria-label="locations-list">
           {markers.map((m) => (
             <li key={m.placeID}>
               <img
@@ -28,7 +28,7 @@ class Sidebar extends Component {
                 className = "App-sidebar-icon"
                 alt       = {m.title}
               />
-              <a onClick={(e) => centerMap(e, m.getPosition())} href="#center-map">{m.title}</a>
+              <a onClick={(e) => centerMap(e, m)} href="#center-map">{m.title}</a>
             </li>
           ))}
         </ul>
